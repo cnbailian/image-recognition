@@ -100,4 +100,4 @@ def features(originally, contrasts):
         print("汉明距离为" + str(result) + " 判定结果为:不是相似图片")
 
 
-features('E:/Images/box_img1.png', 'E:/Images/box_img2.png')
+features('./Images/box_img1.png', './Images/box_img2.png')

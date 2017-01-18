@@ -42,4 +42,4 @@ def aHash(thumbnail, images):
     print(num)
 
 
-aHash(Image.open('E:\Images\shan1.jpg'), Image.open('E:\Images\shan2.jpg'))
+aHash(Image.open('./Images/mountain_1.jpg'), Image.open('./Images/mountain_2.jpg'))

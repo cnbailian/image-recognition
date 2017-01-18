@@ -31,4 +31,4 @@ def pHash(thumbnail, images):
     # narrow = cv2.medianBlur(dct1, 3)
 
 
-pHash(cv2.imread('E:\Images\\box_img3.png', cv2.IMREAD_GRAYSCALE), cv2.imread('E:\Images\\img2.png', cv2.IMREAD_GRAYSCALE))
+pHash(cv2.imread('./Images/box_img3.png', cv2.IMREAD_GRAYSCALE), cv2.imread('./Images/img2.png', cv2.IMREAD_GRAYSCALE))
