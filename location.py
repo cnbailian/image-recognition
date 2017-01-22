@@ -5,7 +5,7 @@ import imutils
 import cv2
 
 
-img = cv2.imread('./Images/111.jpg')
+img = cv2.imread('./Images/hand.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 blurred = cv2.GaussianBlur(gray, (5, 5), 0)
 edged = cv2.Canny(blurred, 75, 200)
@@ -16,6 +16,15 @@ contours = cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SI
 contours = contours[0] if imutils.is_cv2() else contours[1]
 # 神奇
 c = max(contours, key=cv2.contourArea)
+
+# RGB存储为三维矩阵  灰度图像存储为二维矩阵
+# 矩阵其中的2个维度是用来表示图片上的各个的像素点，说的通俗点，就是形成平面。 x y
+# 另一个维度是用来表示RGB（红绿蓝）各个色 的分量。 三个值为 r g b
+# 而灰度图片的RGB分量都是等值的，所以灰度图片的数据可以简化成二维矩阵。 rgb相等 [42, 42, 42] == 42
+# print(img)
+# print(gray)
+
+# 那么问题来了,轮廓为什么是三维的 有一个维度表示 x y ,其他的表示什么呢
 
 # 沿着轮廓确定更多的极值点
 # 左上
@@ -40,5 +49,5 @@ eL = max(extTop[0], extRight[0])
 img = img[sH:eH, sL:eL]
 
 # 输出显示image
-cv2.imshow("Image", img)
-cv2.waitKey(0)
+# cv2.imshow("Image", img)
+# cv2.waitKey(0)
