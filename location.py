@@ -5,12 +5,16 @@ import imutils
 import cv2
 
 
+# 读取
 img = cv2.imread('./Images/hand.jpg')
+# 转为灰度
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# 高斯模糊
 blurred = cv2.GaussianBlur(gray, (5, 5), 0)
+# 边缘检测
 edged = cv2.Canny(blurred, 75, 200)
 
-# 在二值化图片中寻找轮廓，然后抓取最大的一个
+# 在边缘图中寻找轮廓，然后抓取最大的一个
 contours = cv2.findContours(edged.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 # 判断当前openCV环境
 contours = contours[0] if imutils.is_cv2() else contours[1]
@@ -25,6 +29,7 @@ c = max(contours, key=cv2.contourArea)
 # print(gray)
 
 # 那么问题来了,轮廓为什么是三维的 有一个维度表示 x y ,其他的表示什么呢
+# print(c[c[:, :, 0].argmin()])
 
 # 沿着轮廓确定更多的极值点
 # 左上
