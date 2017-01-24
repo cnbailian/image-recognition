@@ -1,12 +1,14 @@
 """
+炉石传说卡牌 法力水晶定位
 orb 实现特征检测
+特征点取值为周围16像素,所以图片要大一点
 """
 import numpy as np
 import cv2
 # from matplotlib import pyplot as plt
 
-img1 = cv2.imread('./Images/mountain_1.jpg', 0)  # trainImage
-img2 = cv2.imread('./Images/mountain_2.jpg', 0)  # queryImage
+img1 = cv2.imread('./Images/sj3.jpg', 0)  # trainImage
+img2 = cv2.imread('./Images/test.jpg', 0)  # queryImage
 
 
 def drawMatches(img1, kp1, img2, kp2, matches):
@@ -64,10 +66,6 @@ def drawMatches(img1, kp1, img2, kp2, matches):
 # Initiate SIFT detector
 orb = cv2.ORB_create()
 
-# cv2.imshow('dst', img2)
-# cv2.waitKey(0)
-# exit()
-
 # find the keypoints and descriptors with SIFT
 kp1, des1 = orb.detectAndCompute(img1, None)
 kp2, des2 = orb.detectAndCompute(img2, None)
@@ -84,8 +82,12 @@ matches = sorted(matches, key=lambda x: x.distance)
 # Draw first 10 matches.
 img3 = drawMatches(img1, kp1, img2, kp2, matches[:10])
 
-cv2.imshow('dst', img3)
+
+imgXxx = cv2.drawKeypoints(img1, kp1, 0)
+imgXxq = cv2.drawKeypoints(img2, kp2, 0)
+
+
+cv2.imshow("test", imgXxx)
+cv2.imshow("test1", imgXxq)
+cv2.imshow("test2", img3)
 cv2.waitKey(0)
-# if cv2.waitKey(0) & 0xff == 27:
-#     cv2.destroyAllWindows()
-# plt.imshow(img3),plt.show()
