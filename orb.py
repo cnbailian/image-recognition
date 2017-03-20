@@ -8,7 +8,7 @@ import cv2
 # from matplotlib import pyplot as plt
 
 img1 = cv2.imread('./Images/sj3.jpg', 0)  # trainImage
-img2 = cv2.imread('./Images/test.jpg', 0)  # queryImage
+img2 = cv2.imread('./Images/hand.jpg', 0)  # queryImage
 
 
 def drawMatches(img1, kp1, img2, kp2, matches):
@@ -83,11 +83,12 @@ matches = sorted(matches, key=lambda x: x.distance)
 img3 = drawMatches(img1, kp1, img2, kp2, matches[:10])
 
 
-imgXxx = cv2.drawKeypoints(img1, kp1, 0)
-imgXxq = cv2.drawKeypoints(img2, kp2, 0)
+# imgXxx = cv2.drawKeypoints(img1, kp1, 0)
+# imgXxq = cv2.drawKeypoints(img2, kp2, 0)
+#
+# print(matches)
 
-
-cv2.imshow("test", imgXxx)
-cv2.imshow("test1", imgXxq)
-cv2.imshow("test2", img3)
-cv2.waitKey(0)
+# cv2.imshow("test", imgXxx)
+# cv2.imshow("test1", imgXxq)
+# cv2.imshow("test2", img3)
+# cv2.waitKey(0)
